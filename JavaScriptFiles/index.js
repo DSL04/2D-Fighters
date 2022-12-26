@@ -63,13 +63,24 @@ const opponent = new EnvironmentSprite({
 
 document.addEventListener('keydown', (event) =>{
     if (event.key == "d") {
-        player.position.x += 5;
+        player.speed.x += 1;
     } else if (event.key == "a" ) {
-        player.position.x -= 5;
+        player.speed.x -= 1;
     } else if (event.key == "w") {
-        player.position.y = 3;
+        player.position.y = -1;
     }
 })
+
+document.addEventListener('keyup', (event) =>{
+    if (event.key == "d") {
+        player.speed.x = 0;
+    } else if (event.key == "a" ) {
+        player.speed.x = 0;
+    } else if (event.key == "w") {
+        player.speed.y = 0;
+    }
+})
+
 
 
 // infinite loop that animates sprites and frames
