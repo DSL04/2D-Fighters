@@ -29,11 +29,8 @@ class EnvironmentSprite {
 
      if (this.position.x + 50 + this.speed.x >= canvas.width) {
         this.speed.x = 0;
-        this.position.x += this.speed.x;
      } else if(this.position.x <= 0) {
         this.speed.x = 0;
-        this.position.x += this.speed.x;
-
      } 
      
 
