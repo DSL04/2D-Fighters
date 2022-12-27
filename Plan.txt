@@ -1,0 +1,10 @@
+Class EnvironmentSprite
+- this will compute the background sprites and animations
+- some of the physics properties such as gravity
+-
+
+Class Players extends Environment Sprite
+- functionalities such as moving, jumping attacking
+- special moves
+
+Class WinConditions extends Environment Sprite

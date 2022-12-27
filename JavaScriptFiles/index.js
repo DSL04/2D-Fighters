@@ -25,9 +25,19 @@ class EnvironmentSprite {
     // draws players and allows for movement
     spriteMotion() {
      this.drawSprite();
-    
      this.position.x += this.speed.x;
 
+     if (this.position.x + 50 + this.speed.x >= canvas.width) {
+        this.speed.x = 0;
+        this.position.x += this.speed.x;
+     } else if(this.position.x <= 0) {
+        this.speed.x = 0;
+        this.position.x += this.speed.x;
+
+     } 
+     
+
+     // bottom floor boundary(so player doesn't fall to his impending doom) + gravity effect
      if (this.position.y + 200 + this.speed.y < canvas.height) {
         this.speed.y += 0.35
         this.position.y += this.speed.y;
@@ -63,14 +73,16 @@ const opponent = new EnvironmentSprite({
     }
 })
 
+// by default, players are in a no jump state
 let checkJump = false;
+
 document.addEventListener('keydown', (event) =>{
     if (event.key == "d") {
         player.speed.x = 7;
     } else if (event.key == "a" ) {
         player.speed.x = -7;
     } else if (event.key == "w" && checkJump == false) {
-        player.speed.y = -15 ;
+        player.speed.y = -12 ;
         checkJump = true;
     }
 })
@@ -81,7 +93,7 @@ document.addEventListener('keyup', (event) =>{
     } else if (event.key == "a" ) {
         player.speed.x -= 0;
     } else if (event.key == "w") {
-        player.speed.y = 0; 
+        player.speed.y += 0; 
     }
 })
 
