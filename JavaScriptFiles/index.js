@@ -27,11 +27,13 @@ class EnvironmentSprite {
      this.drawSprite();
     
      this.position.x += this.speed.x;
+
      if (this.position.y + 200 + this.speed.y < canvas.height) {
         this.speed.y += 0.35
         this.position.y += this.speed.y;
      } else if( this.position.y + 200 + this.speed.y >= canvas.height) {
         this.speed.y = 0
+        checkJump = false;
      }
         
     }
@@ -61,25 +63,29 @@ const opponent = new EnvironmentSprite({
     }
 })
 
+let checkJump = false;
 document.addEventListener('keydown', (event) =>{
     if (event.key == "d") {
-        player.speed.x += 1;
+        player.speed.x = 7;
     } else if (event.key == "a" ) {
-        player.speed.x -= 1;
-    } else if (event.key == "w") {
-        player.position.y = -1;
+        player.speed.x = -7;
+    } else if (event.key == "w" && checkJump == false) {
+        player.speed.y = -15 ;
+        checkJump = true;
     }
 })
 
 document.addEventListener('keyup', (event) =>{
     if (event.key == "d") {
-        player.speed.x = 0;
+        player.speed.x += 0;
     } else if (event.key == "a" ) {
-        player.speed.x = 0;
+        player.speed.x -= 0;
     } else if (event.key == "w") {
-        player.speed.y = 0;
+        player.speed.y = 0; 
     }
 })
+
+
 
 
 
