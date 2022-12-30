@@ -40,10 +40,16 @@ class EnvironmentSprite {
         this.speed.y += 0.35
         this.position.y += this.speed.y;
      } else if( this.position.y + 200 + this.speed.y >= canvas.height) {
-        this.speed.y = 0
-        checkJumpPlayer = false;
-        // checkJumpOpponent = false;
-     }
+        this.speed.y = 0;
+        if (this.position.y === player.position.y) {
+            checkJumpPlayer = false;
+        }
+        else if (this.position.y === opponent.position.y) {
+            checkJumpOpponent = false;
+        }
+        
+    } 
+    
         
     }
 }
@@ -73,8 +79,8 @@ const opponent = new EnvironmentSprite({
 })
 
 // by default, players are in a no jump state
-let checkJumpPlayer = false;
-let checkJumpOpponent = false;
+var checkJumpPlayer = false;
+var checkJumpOpponent = false;
 
 document.addEventListener('keydown', (event) =>{
     if (event.key == "d") {
@@ -89,34 +95,34 @@ document.addEventListener('keydown', (event) =>{
 
 document.addEventListener('keyup', (event) =>{
     if (event.key == "d") {
-        player.speed.x += 0;
+        player.speed.x = 0;
     } else if (event.key == "a") {
-        player.speed.x -= 0;
+        player.speed.x = 0;
     } else if (event.key == "w") {
         player.speed.y += 0; 
     }
 })
 
-// document.addEventListener('keydown', (event) =>{
-//     if ( event.key == "ArrowRight") {
-//         opponent.speed.x = 7;
-//     } else if (event.key == "ArrowLeft" ) {
-//         opponent.speed.x = -7;
-//     } else if (event.key == "ArrowUp" && checkJumpOpponent == false) {
-//         opponent.speed.y = -12 ;
-//         checkJumpOpponent = true;
-//     }
-// })
+document.addEventListener('keydown', (event) =>{
+    if ( event.key == "ArrowRight") {
+        opponent.speed.x = 7;
+    } else if (event.key == "ArrowLeft" ) {
+        opponent.speed.x = -7;
+    } else if (event.key == "ArrowUp" && checkJumpOpponent == false) {
+        opponent.speed.y = -12 ;
+        checkJumpOpponent = true;
+    }
+})
 
-// document.addEventListener('keyup', (event) =>{
-//     if (event.key == "ArrowRight") {
-//         opponent.speed.x += 0;
-//     } else if (event.key == "ArrowLeft") {
-//         opponent.speed.x -= 0;
-//     } else if (event.key == "ArrowUp") {
-//         opponent.speed.y += 0; 
-//     }
-// })
+document.addEventListener('keyup', (event) =>{
+    if (event.key == "ArrowRight") {
+        opponent.speed.x = 0;
+    } else if (event.key == "ArrowLeft") {
+        opponent.speed.x = 0;
+    } else if (event.key == "ArrowUp") {
+        opponent.speed.y += 0;
+    }
+})
 
 
 
