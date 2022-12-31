@@ -21,6 +21,7 @@ class EnvironmentSprite {
      drawSprite() {
        context.fillStyle = "black";
        context.fillRect(this.position.x, this.position.y, 50, 200)
+
     }
     // draws players and allows for movement
     spriteMotion() {
@@ -50,7 +51,18 @@ class EnvironmentSprite {
         
     } 
     
-        
+    }
+
+    playerAttackSprite() {
+    //player
+    context.fillStyle = "red";
+    context.fillRect(player.position.x + 50 , player.position.y, 100, 200);     
+    }
+
+    opponentAttackSprite() {
+    //opponent
+    context.fillStyle = "red";
+    context.fillRect(opponent.position.x , opponent.position.y, -100, 200);
     }
 }
 
@@ -81,6 +93,8 @@ const opponent = new EnvironmentSprite({
 // by default, players are in a no jump state
 var checkJumpPlayer = false;
 var checkJumpOpponent = false;
+var checkPlayerAttack = false;
+var checkOpponentAttack = false;
 
 document.addEventListener('keydown', (event) =>{
     if (event.key == "d") {
@@ -90,6 +104,8 @@ document.addEventListener('keydown', (event) =>{
     } else if (event.key == "w" && checkJumpPlayer == false) {
         player.speed.y = -12 ;
         checkJumpPlayer = true;
+    } else if(event.key == "j" ) {
+        checkPlayerAttack = true;
     }
 })
 
@@ -100,6 +116,8 @@ document.addEventListener('keyup', (event) =>{
         player.speed.x = 0;
     } else if (event.key == "w") {
         player.speed.y += 0; 
+    } else if (event.key == "j") {
+        checkPlayerAttack = false;
     }
 })
 
@@ -111,6 +129,8 @@ document.addEventListener('keydown', (event) =>{
     } else if (event.key == "ArrowUp" && checkJumpOpponent == false) {
         opponent.speed.y = -12 ;
         checkJumpOpponent = true;
+    } else if (event.key == ";") {
+        checkOpponentAttack = true;
     }
 })
 
@@ -121,6 +141,8 @@ document.addEventListener('keyup', (event) =>{
         opponent.speed.x = 0;
     } else if (event.key == "ArrowUp") {
         opponent.speed.y += 0;
+    } else if (event.key == ";") {
+        checkOpponentAttack = false;
     }
 })
 
@@ -133,6 +155,11 @@ function animation(){
     context.fillRect(0,0,canvas.width, canvas.height);
     player.spriteMotion();
     opponent.spriteMotion();
+    if (checkPlayerAttack == true) {
+        player.playerAttackSprite();
+    } else if (checkOpponentAttack == true) {
+        opponent.opponentAttackSprite();
+    }
 
     
 }
