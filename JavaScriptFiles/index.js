@@ -15,6 +15,18 @@ class EnvironmentSprite {
         this.speed = speed;
         this.width = 50;
         this.height = 200;
+        this.playerHitBox = {
+            position: {
+                x: this.position.x,
+                y: this.position.y
+            }
+        }
+        this.opponentHitBox = {
+            position: {
+                x: this.position.x ,
+                y: this.position.y
+            }
+        }
 
     }
     // draws the background sprite
@@ -26,6 +38,12 @@ class EnvironmentSprite {
     // draws players and allows for movement
     spriteMotion() {
      this.drawSprite();
+     this.playerHitBox.position.x = player.position.x + 50
+     this.playerHitBox.position.y = player.position.y
+     this.opponentHitBox.position.x = opponent.position.x
+     this.opponentHitBox.position.y = opponent.position.y
+
+
      this.position.x += this.speed.x;
     
      // player cannot advance past the borders of the x-axis
@@ -56,21 +74,21 @@ class EnvironmentSprite {
     playerAttackSprite() {
     //player
     context.fillStyle = "red";
-    context.fillRect(player.position.x + 50 , player.position.y, 100, 200);     
+    context.fillRect(player.playerHitBox.position.x , player.playerHitBox.position.y, 100, 200);     
     }
 
     opponentAttackSprite() {
     //opponent
     context.fillStyle = "red";
-    context.fillRect(opponent.position.x , opponent.position.y, -100, 200);
+    context.fillRect(opponent.opponentHitBox.position.x , opponent.opponentHitBox.position.y, -100, 200);
     }
 
     attackCollison() {
     var attacked = false;
 
-        if ((opponent.width >= player.playerAttackSprite() >= opponent.position.x) && checkPlayerAttack == true) {
+        if ((player.playerHitBox.position.x + 100 >= opponent.position.x) && checkPlayerAttack == true) {
             attacked = true;
-            console.log(attacked);
+            console.log("attacked");
 
         } 
     }
@@ -107,6 +125,8 @@ var checkJumpOpponent = false;
 //by default, players are not in an attacking state
 var checkPlayerAttack = false;
 var checkOpponentAttack = false;
+
+var attacked = false;
 
 document.addEventListener('keydown', (event) =>{
     if (event.key == "d") {
@@ -173,7 +193,14 @@ function animation(){
     }if (checkOpponentAttack == true) {
         opponent.opponentAttackSprite();
     }
+    if ((player.position.x + 50 + 100 >= opponent.position.x + 50 >= player.position.x + 50) && checkPlayerAttack == true) {
+        attacked = true;
+        console.log(attacked);
+    } else if ((player.position.x + 50 + 100 >= opponent.position.x >= player.position.x + 50) && checkPlayerAttack == true) {
+        attacked = true;
+        console.log(attacked);
 
+    }
 
 
     
