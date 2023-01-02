@@ -88,7 +88,7 @@ class EnvironmentSprite {
 
         if ((player.playerHitBox.position.x + 100 >= opponent.position.x) && checkPlayerAttack == true) {
             attacked = true;
-            console.log("attacked");
+            console.log(attacked);
 
         } 
     }
@@ -193,14 +193,10 @@ function animation(){
     }if (checkOpponentAttack == true) {
         opponent.opponentAttackSprite();
     }
-    if ((player.position.x + 50 + 100 >= opponent.position.x + 50 >= player.position.x + 50) && checkPlayerAttack == true) {
+    if ((player.position.x + 50 + 100 >= opponent.position.x ) && checkPlayerAttack == true) {
         attacked = true;
         console.log(attacked);
-    } else if ((player.position.x + 50 + 100 >= opponent.position.x >= player.position.x + 50) && checkPlayerAttack == true) {
-        attacked = true;
-        console.log(attacked);
-
-    }
+    } 
 
 
     
