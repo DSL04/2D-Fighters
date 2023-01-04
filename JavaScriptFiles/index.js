@@ -126,7 +126,9 @@ var checkJumpOpponent = false;
 var checkPlayerAttack = false;
 var checkOpponentAttack = false;
 
-var attacked = false;
+//by default, players are not being attacked
+var playerAttacked = false;
+var opponentAttacked = false;
 
 document.addEventListener('keydown', (event) =>{
     if (event.key == "d") {
@@ -193,10 +195,21 @@ function animation(){
     }if (checkOpponentAttack == true) {
         opponent.opponentAttackSprite();
     }
-    if ((player.position.x + 50 + 100 >= opponent.position.x ) && checkPlayerAttack == true) {
-        attacked = true;
-        console.log(attacked);
-    } 
+    if ((player.playerHitBox.position.x + 100 >= opponent.position.x) 
+         && (opponent.position.x + 50 >= player.playerHitBox.position.x) 
+         && checkPlayerAttack == true) 
+    {
+        opponentAttacked = true;
+        setTimeout(() => {
+            opponentAttacked = false;
+        }, 1000)
+
+        console.log("opponentAttacked");
+
+    } if ((opponent.opponentHitBox.position.x -100 <= player.position.x) && (player.position.x + 50 <= opponent.opponentHitBox.position.x) && checkOpponentAttack == true) {
+        playerAttacked = true;
+        console.log("playerAttacked");
+    }
 
 
     

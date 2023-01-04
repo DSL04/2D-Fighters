@@ -1,11 +1,23 @@
 <html>
 <head>
     <body>
-        <!--Player Health-->
-        <div style ="background-color:black; height: 100px; width: 50%;"></div>
+        <!--Game Container-->
+        <div style = "position: relative;">
+            <!--Health/timer container-->
+            <div style = "position: absolute; display: flex;">
+                <!--Player Health-->
+                <div style ="background-color: black; height: 100px; width: 50%;"></div>
+                
+                <!--Timer-->
+                <div style ="background-color:black; height: 100px; width: 100px;"></div>
+                
+                <!--Enemy Health-->
+                <div style ="background-color: black; height: 50px; width: 50%;"></div>
+            </div>
+        <canvas></canvas>
+        </div>
+        
 
-        <canvas>
-        </canvas>
         <script src = "JavaScriptFiles/index.js"></script>
     </body>
 </head>
