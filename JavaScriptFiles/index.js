@@ -27,6 +27,7 @@ class EnvironmentSprite {
                 y: this.position.y
             }
         }
+        this.health = 100;
 
     }
     // draws the background sprite
@@ -199,16 +200,21 @@ function animation(){
          && (opponent.position.x + 50 >= player.playerHitBox.position.x) 
          && checkPlayerAttack == true) 
     {
-        opponentAttacked = true;
-        setTimeout(() => {
-            opponentAttacked = false;
-        }, 1000)
+        // opponentAttacked = true;
+        // setTimeout(() => {
+        //     opponentAttacked = false;
+        // }, 1000)
 
-        console.log("opponentAttacked");
+        // console.log("opponentAttacked");
+        opponent.health -= 1
+        document.querySelector("#opponentHealth").style.width = opponent.health + "%"
 
     } if ((opponent.opponentHitBox.position.x -100 <= player.position.x) && (player.position.x + 50 <= opponent.opponentHitBox.position.x) && checkOpponentAttack == true) {
-        playerAttacked = true;
-        console.log("playerAttacked");
+        // playerAttacked = true;
+        // console.log("playerAttacked");
+        // document.querySelector("#enemyHealth").style.width = "20%"
+        player.health -= 1
+        document.querySelector("#playerHealth").style.width = player.health + "%"
     }
 
 
