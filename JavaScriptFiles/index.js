@@ -209,7 +209,9 @@ function animation(){
         opponent.health -= 1
         document.querySelector("#opponentHealth").style.width = opponent.health + "%"
 
-    } if ((opponent.opponentHitBox.position.x -100 <= player.position.x) && (player.position.x + 50 <= opponent.opponentHitBox.position.x) && checkOpponentAttack == true) {
+    } if ((opponent.opponentHitBox.position.x -100 <= player.position.x + 50) 
+        && (player.position.x + 50 <= opponent.opponentHitBox.position.x) 
+        && checkOpponentAttack == true) {
         // playerAttacked = true;
         // console.log("playerAttacked");
         // document.querySelector("#enemyHealth").style.width = "20%"
@@ -217,11 +219,49 @@ function animation(){
         document.querySelector("#playerHealth").style.width = player.health + "%"
     }
 
+    
+
 
     
 }
 
 animation()
+
+var counter = 10;
+function timer() {
+    setTimeout(timer, 1000);
+    if (counter > 0) {
+        counter--;
+        document.querySelector("#timer").innerHTML = counter;
+    }
+    
+}
+
+timer();
+
+function winConditions() {
+    document.querySelector("#winConditionsText").style.display = "flex"
+    if (counter > 0) {
+        if (opponent.health === 0) {
+            document.querySelector("#winConditionsText").innerHTML = "Player 1 Wins"
+        } else if (player.health === 0) {
+            document.querySelector("#winConditionsText").innerHTML = "Player 2 Wins"
+
+        } else if (player.health === opponent.health) {
+            document.querySelector("#winConditionsText").innerHTML = "Draw"
+        }
+
+    } else if ( counter === 0) {
+        if (player.health > opponent.health) {
+            document.querySelector("#winConditionsText").innerHTML = "Player 1 Wins"
+        } else if (player.health < opponent.health) {
+            document.querySelector("#winConditionsText").innerHTML = "Player 2 Wins"
+        } else if (player.health === opponent.health) {
+            document.querySelector("#winConditionsText").innerHTML = "Draw"
+        }
+    }
+
+}
 
 // class Players extends EnvironmentSprite{
 
