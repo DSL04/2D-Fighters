@@ -251,15 +251,16 @@ function winConditions() {
             document.querySelector("#winConditionsText").innerHTML = "Draw"
         }
 
-    } else if ( counter === 0) {
-        if (player.health > opponent.health) {
-            document.querySelector("#winConditionsText").innerHTML = "Player 1 Wins"
-        } else if (player.health < opponent.health) {
-            document.querySelector("#winConditionsText").innerHTML = "Player 2 Wins"
-        } else if (player.health === opponent.health) {
-            document.querySelector("#winConditionsText").innerHTML = "Draw"
-        }
-    }
+    } 
+    // else if ( counter === 0) {
+    //     if (player.health > opponent.health) {
+    //         document.querySelector("#winConditionsText").innerHTML = "Player 1 Wins"
+    //     } else if (player.health < opponent.health) {
+    //         document.querySelector("#winConditionsText").innerHTML = "Player 2 Wins"
+    //     } else if (player.health === opponent.health) {
+    //         document.querySelector("#winConditionsText").innerHTML = "Draw"
+    //     }
+    // }
 
 }
 
