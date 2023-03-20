@@ -1,13 +1,15 @@
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="./styling.css">
+</head>
     <body>
         <!--Game Container-->
-        <div style = "position: relative; display: inline-block;">
+        <div class=" gameContainer">
             <!--Health/timer container-->
-            <div style = "position: absolute; display: flex; width: 100%; align-items: center;">
+            <div class="healthTimerContainer">
                 
                 <!--Player Health-->
-                <div style = "position: relative; height: 50px; width: 50%; display: flex; justify-content: flex-end;">
+                <div class="playerHealth">
                     <div 
                         id = "playerHealth"
                         style ="background-color: black; height: 50px; width: 100%;">
@@ -16,13 +18,13 @@
 
                 <!--Timer-->
                 <div 
-                    id = "timer"
-                    style ="background-color:rgb(181, 104, 104); height: 70px; width: 100px; display: flex; align-items: center; justify-content: center; ">
-                    <p>10</p>
+                    id = "timer" 
+                    class="timer">
+                    
                 </div>
                 
                 <!--Opponent Health-->
-                <div style = "position: relative; height: 50px; width: 50%;">
+                <div class="opponentHealth">
                     <div 
                         id = "opponentHealth"
                         style ="background-color:  black; height: 50px; width: 100%;">
@@ -32,13 +34,14 @@
             <!--Win Conditions Text-->
             <div 
                 id = "winConditionsText"
-                 style = "display: flex; position: absolute; justify-content: center; align-items: center; top: 0; bottom: 0; right: 0; left: 0;">
+                class="winCondition">
             </div>
         <canvas></canvas>
         </div>
         
-
-        <script src = "JavaScriptFiles/index.js"></script>
+        <script src="player.js"></script>
+        <script src = "index.js"></script>
+        <script src="environment.js"></script>
     </body>
-</head>
+
 </html>

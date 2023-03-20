@@ -1,0 +1,15 @@
+Use console.log(argument) to test 
+
+Project Planning
+- create index.html, and index.js
+- Set the canvas to the page using variable
+- Set a 2D attribute to the page using variable( u call on this variable alot)
+- create canvas dimensions
+- create a rectangle field, with a starter point at 0,0, and ending point the size of the canvas dimensions
+
+Creating Player and Enemy
+- create a class sprite, assign a constructor with a position argument, and instantitiate it
+- create player object from class sprite, with x,y point at 0,0
+- create a method to draw the sprite, and calls the position argument, also assign a color to that sprite
+
+

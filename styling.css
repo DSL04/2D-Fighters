@@ -1,0 +1,44 @@
+.gameContainer {
+    position: relative;
+    display: inline-block;
+}
+
+.healthTimerContainer {
+    position: absolute; 
+    display: flex; 
+    width: 100%; 
+    align-items: center;
+    
+}
+
+.playerHealth {
+    position: relative; 
+    height: 50px; 
+    width: 50%; 
+    display: flex; 
+    justify-content: flex-end;
+}
+
+.timer {
+    background-color:rgb(27, 182, 128); 
+    height: 70px; 
+    width: 100px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+
+}
+
+.opponentHealth {
+    position: relative; 
+    height: 50px; 
+    width: 50%;
+}
+
+.winCondition {
+    display: flex; 
+    position: absolute; 
+    justify-content: center; 
+    align-items: center; 
+    top: 0; bottom: 0; right: 0; left: 0;
+}
