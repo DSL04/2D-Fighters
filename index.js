@@ -1,28 +1,50 @@
 //Setting environment to 2D by querying for the canvas tag and retrieving 2D context
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
+const video = document.querySelector('video');
 
 //Game screen dimensions
 canvas.width = 1024;
-canvas.height = 576;
+canvas.height = 587;
 
 context.fillStyle = "blue";
 context.fillRect(0,0,canvas.width, canvas.height);
 
-//Class for background sprite
 
+
+//Class for background sprite
+const background = new EnvironmentSprite({
+    position: {
+        x:0,
+        y:0
+    },
+    imgSrc: 'src/assets/backgrounds/heavens_arena.png'
+})
+
+// const some = new EnvironmentSprite({
+//     position: {
+//         x:0,
+//         y:0
+//     },
+//     imgSrc: 'src/assets/characters/chrollo_idle.png' 
+// })
 
 //Creates player object
 const player = new Player({
     position: {
      x: 0,
-     y:0
+     y: 450
     },
     speed: {
      x: 0,
      y: 0 
-    }
+    }, 
+    imgSrc: 'src/assets/characters/chrollo/chrollo_idle2.png',
+    magnify: 2,
+    maxFrames: 1,
     
+    
+      
 })
 
 const opponent = new Player({
@@ -31,9 +53,10 @@ const opponent = new Player({
      y:0 
     },
     speed:{
-    x:0,
-    y:0
-    }
+     x:0,
+     y:0
+    },
+
 })
 
 // by default, players are in a no jump state
@@ -180,8 +203,11 @@ function animation(){
     window.requestAnimationFrame(animation);
     context.fillStyle = "blue";
     context.fillRect(0,0,canvas.width, canvas.height);
-    player.spriteMotion();
-    opponent.spriteMotion();
+    background.updateSprite();
+    // some.spriteMotion()
+    // context.drawImage(video, 0, 0,)
+    player.updateSprite();
+    // opponent.updateSprite();
     
     attackCollison();
     winConditions();
